@@ -84,6 +84,14 @@ import social4 from '../assets/images/social/4.png'
 import social5 from '../assets/images/social/5.png'
 import social6 from '../assets/images/social/6.png'
 
-export const socialImages={
-    social1,social2,social3,social4,social5,social6
+export const socialImages = {
+    social1, social2, social3, social4, social5, social6
+}
+
+// sale 
+import sale1 from '../assets/images/sale/1.png'
+import sale2 from '../assets/images/sale/2.png'
+import sale3 from '../assets/images/sale/3.png'
+export const saleImages = {
+    sale1, sale2, sale3
 }

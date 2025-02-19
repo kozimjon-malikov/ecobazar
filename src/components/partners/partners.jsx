@@ -29,8 +29,10 @@ export default function Partners() {
                 <img src={partnerImages.partner5} alt="img" />
                 <span className='w-[1.5px] h-10 bg-gray-300'></span>
             </div>
-            <div>
+            <div className='flex items-center justify-between'>
+                <span></span>
                 <img src={partnerImages.partner6} alt="img" />
+                <span></span>
             </div>
         </div>
     )
