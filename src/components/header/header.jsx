@@ -1,64 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronDown, Menu, Phone, X } from "lucide-react";
-const [visible, setVisible] = useState(false);
-
-useEffect(() => {
-    const toggleVisibility = () => {
-        if (window.scrollY > 300) {
-            setVisible(true);
-        } else {
-            setVisible(false);
-        }
-    };
-
-    window.addEventListener("scroll", toggleVisibility);
-    return () => window.removeEventListener("scroll", toggleVisibility);
-}, []);
-const menuItems = [
-    {
-        title: "Home",
-        items: [
-            { title: "Home Default", href: "#" },
-            { title: "Home Organic", href: "#" },
-            { title: "Home Grocery", href: "#" },
-        ],
-    },
-    {
-        title: "Shop",
-        items: [
-            { title: "Shop Grid", href: "#" },
-            { title: "Shop List", href: "#" },
-            { title: "Shop Details", href: "#" },
-            { title: "Shopping Cart", href: "#" },
-            { title: "Checkout", href: "#" },
-        ],
-    },
-    {
-        title: "Pages",
-        items: [
-            { title: "About Us", href: "#" },
-            { title: "Contact Us", href: "#" },
-            { title: "FAQ", href: "#" },
-            { title: "Privacy Policy", href: "#" },
-            { title: "Terms & Conditions", href: "#" },
-        ],
-    },
-    {
-        title: "Blog",
-        items: [
-            { title: "Blog Grid", href: "#" },
-            { title: "Blog List", href: "#" },
-            { title: "Blog Details", href: "#" },
-        ],
-    },
-];
+import { menuItems } from "./menuApi";
 
 export function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState(null);
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 100);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     return (
-        <nav className="bg-[#333] text-white ">
+        <nav
+            className={` ${isOpen ? 'h-full' : 'h-18'} ${isScrolled ? "bg-[#333] py-2 bg-opacity-90 backdrop-blur-md shadow-md fixed top-0 left-0 w-full z-50 transition-all duration-300" : "bg-[#333] w-full h-fit text-white"
+                }`}
+        >
             <div className="custom-container mx-auto px-4">
                 <div className="flex items-center justify-between py-4">
                     {/* Mobile Menu Button */}
@@ -84,7 +46,7 @@ export function Header() {
                                     <ChevronDown size={16} />
                                 </button>
                                 <ul
-                                    className={`absolute -left-3 overflow-hidden top-7 z-50 min-w-[200px] bg-white text-black shadow-lg rounded-md transform transition-all duration-300 ease-in-out 
+                                    className={`absolute -left-3 overflow-hidden top-7 z-50 min-w-[200px] bg-white text-black shadow-lg rounded-md transform transition-all duration-300 ease-in-out
                                     ${activeDropdown === item.title ? "opacity-100 scale-100 visible" : "opacity-0 scale-95 invisible"}`}
                                 >
                                     {item.items.map((subItem) => (
@@ -97,12 +59,12 @@ export function Header() {
                                 </ul>
                             </div>
                         ))}
-                        <a href="/about" className="hover:text-green-400">About Us</a>
-                        <a href="/contact" className="hover:text-green-400">Contact Us</a>
+                        <a href="/about" className="hover:text-green-400 text-white">About Us</a>
+                        <a href="/contact" className="hover:text-green-400 text-white">Contact Us</a>
                     </div>
 
                     {/* Phone Contact */}
-                    <div className="hidden lg:flex items-center gap-2">
+                    <div className="hidden lg:flex items-center gap-2 text-white">
                         <Phone size={18} />
                         <span>(219) 555-0114</span>
                     </div>
@@ -111,13 +73,13 @@ export function Header() {
 
             {/* Mobile Menu */}
             <div
-                className={`fixed inset-0 z-40 bg-black bg-opacity-50 transition-opacity duration-300 lg:hidden 
+                className={`fixed inset-0 z-40 bg-black bg-opacity-50 transition-opacity duration-300 lg:hidden
                 ${isOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}
                 onClick={() => setIsOpen(false)}
             ></div>
 
             <div
-                className={`fixed top-0 left-0 h-full w-[75%] sm:w-[60%] bg-gray-900 z-50 transform transition-transform duration-300 
+                className={`fixed top-0 left-0 h-full w-[75%] sm:w-[60%] bg-gray-900 z-50 transform transition-transform duration-300
                 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
             >
                 <div className="p-5">
@@ -141,7 +103,7 @@ export function Header() {
                                 </button>
 
                                 <ul
-                                    className={`overflow-hidden transition-all duration-300 ease-in-out 
+                                    className={`overflow-hidden transition-all duration-300 ease-in-out
                                     ${activeDropdown === item.title ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}`}
                                 >
                                     {item.items.map((subItem) => (
