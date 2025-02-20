@@ -23,7 +23,6 @@ export function Header() {
         >
             <div className="custom-container mx-auto px-4">
                 <div className="flex items-center justify-between py-4">
-                    {/* Mobile Menu Button */}
                     <button
                         onClick={() => setIsOpen(!isOpen)}
                         className="lg:hidden text-white"
@@ -31,8 +30,6 @@ export function Header() {
                     >
                         {isOpen ? <X size={28} /> : <Menu size={28} />}
                     </button>
-
-                    {/* Desktop Navigation */}
                     <div className="hidden lg:flex gap-8">
                         {menuItems.map((item) => (
                             <div
