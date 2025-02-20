@@ -95,3 +95,39 @@ import sale3 from '../assets/images/sale/3.png'
 export const saleImages = {
     sale1, sale2, sale3
 }
+
+// header 
+import map from '../assets/images/header/map.png'
+import bagCart from '../assets/images/header/bag.svg'
+import logo from '../assets/images/logo.svg'
+import heartIcon from '../assets/images/header/heart.svg'
+import hero from '../assets/images/hero/hero.png'
+import discount from '../assets/images/hero/discount.png'
+import hero1 from '../assets/images/hero/1.png'
+import hero2 from '../assets/images/hero/2.png'
+export const headerImages = {
+    map, bagCart, logo, heartIcon, hero, discount, hero1, hero2
+}
+
+
+
+// deals 
+
+
+import deals2 from '../assets/images/deals/2.png'
+import deals3 from '../assets/images/deals/3.png'
+import deals4 from '../assets/images/deals/4.png'
+import deals5 from '../assets/images/deals/5.png'
+import deals6 from '../assets/images/deals/6.png'
+import deals7 from '../assets/images/deals/7.png'
+import deals8 from '../assets/images/deals/8.png'
+import deals9 from '../assets/images/deals/9.png'
+import deals10 from '../assets/images/deals/10.png'
+import deals11 from '../assets/images/deals/11.png'
+import deals12 from '../assets/images/deals/12.png'
+import dealsBag from '../assets/images/deals/bag.svg'
+import dealsMain from '../assets/images/deals/1@.png'
+export const dealsImages = {
+    deals2, deals3, deals4, deals5, deals6, deals7, deals8, deals9, deals10, deals11, deals12, dealsMain
+    ,dealsBag
+}

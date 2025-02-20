@@ -1,5 +1,6 @@
 import { Phone, Mail } from "lucide-react"
 import { footerImages } from "../../utils/share"
+import ScrollToTop from "../../utils/toTop"
 
 const footerLinks = {
     myAccount: [
@@ -30,8 +31,8 @@ const footerLinks = {
 
 export default function Footer() {
     return (
-        <footer className="bg-gray-900 text-gray-300">
-            <div className="container mx-auto px-4 py-12">
+        <footer className="bg-gray-900 text-gray-300 relative">
+            <div className="custom-container mx-auto px-4 py-12">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
                     <div className="lg:col-span-1">
                         <a href="/" className="flex items-center gap-2 text-white mb-4">
@@ -108,10 +109,11 @@ export default function Footer() {
                     </div>
                 </div>
 
+                <ScrollToTop />
                 {/* Bottom Bar */}
                 <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-sm">Ecobazar eCommerce © 2021. All Rights Reserved</p>
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-4 flex-wrap">
                         <img src={footerImages.footer1} alt="Payment methods" width={250} height={30} className="h-8 w-auto" />
                         <img src={footerImages.footer2} alt="Payment methods" width={250} height={30} className="h-8 w-auto" />
                         <img src={footerImages.footer3} alt="Payment methods" width={250} height={30} className="h-8 w-auto" />
@@ -120,6 +122,7 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
+
         </footer>
     )
 }

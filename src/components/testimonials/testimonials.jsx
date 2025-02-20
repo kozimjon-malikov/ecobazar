@@ -69,8 +69,8 @@ const StarRating = ({ rating }) => {
 
 export default function Testimonials() {
     return (
-        <section className="py-12 bg-gray-50">
-            <div className="container mx-auto px-4">
+        <section className="py-12 bg-gray-100">
+            <div className="container mx-auto px-4 custom-container">
                 <div className="flex justify-between items-center mb-8">
                     <h2 className="text-3xl font-bold text-center">Client Testimonials</h2>
                     <div className="flex gap-2">

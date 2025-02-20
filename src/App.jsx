@@ -8,25 +8,39 @@ import News from './components/news/news'
 import Testimonials from './components/testimonials/testimonials'
 import Partners from './components/partners/partners'
 import Footer from './components/footer/footer'
-import Social from './components/social/social'
-import Subscribe from './components/subscribe/subscribe'
 import Sale from './components/sale/sale'
+import { Header } from './components/header/header'
+import { TopHeader } from './components/header/topheader'
+import Topbar from './components/header/topbar'
+import { HeroSection } from './components/hero/hero'
+import { DiscountSection } from './components/discount/discount'
+import { DealsSection } from './components/deals/deals'
+import { BrowserRouter } from 'react-router-dom'
+import ScrollToTop from './utils/toTop'
+import SubscribeSection from './components/subscribe/subscribe'
+import SocialSection from './components/social/social'
+import NewsSection from './components/news/news'
+import SaleSection from './components/sale/sale'
 export default function App() {
   return (
-    <div className='my-5'>
-      <div className='custom-container'>
-        <Services />
-        <Sale />
-        <FeaturedProducts />
-      </div>
+    <BrowserRouter>
+      <Topbar />
+      <TopHeader />
+      <Header />
+      <HeroSection />
+      <Services />
       <Category />
       <Products />
-      <News />
+      <SaleSection />
+      <DealsSection />
+      <DiscountSection />
+      <FeaturedProducts />
+      <NewsSection />
       <Testimonials />
       <Partners />
-      <Social />
-      <Subscribe />
+      <SocialSection />
+      <SubscribeSection />
       <Footer />
-    </div>
+    </BrowserRouter>
   )
 }

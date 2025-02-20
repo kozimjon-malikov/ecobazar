@@ -1,6 +1,6 @@
 import { Heart, Eye, ShoppingCart, ChevronRight, ShoppingBag } from "lucide-react"
 import { categoryImages, productImages } from "../../utils/share"
-
+import { motion } from 'framer-motion'
 const products = [
     {
         id: 1,
@@ -62,7 +62,7 @@ const StarRating = ({ rating }) => {
 export default function FeaturedProducts() {
     return (
         <section className="py-8">
-            <div className="container mx-auto px-4">
+            <div className="custom-container  px-4">
                 <div className="flex justify-between items-center mb-6">
                     <h2 className="text-2xl font-bold text-gray-900">Featured Products</h2>
                     <a href="/products" className="text-green-600 font-semibold hover:text-green-700 flex items-center gap-1">
@@ -71,7 +71,11 @@ export default function FeaturedProducts() {
                     </a>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+                <motion.div
+                    initial={{ opacity: 0, y: 75, }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.4 }}
+                    className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
                     {products.map((product) => (
                         <div
                             key={product.id}
@@ -114,7 +118,7 @@ export default function FeaturedProducts() {
                             </div>
                         </div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
     )

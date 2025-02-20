@@ -1,19 +1,9 @@
+body {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
 .custom-container {
     max-width: 1320px;
     margin: 0 auto;
 }
-
-/* .partners__section div {
-    position: relative;
-}
-
-.partners__section div::after {
-    position: absolute;
-    content: '';
-    height: 80%;
-    width: 2px;
-    right: -10px;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background-color: gray;
-} */

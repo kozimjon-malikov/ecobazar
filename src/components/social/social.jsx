@@ -2,11 +2,11 @@ import React from 'react'
 import { socialImages } from '../../utils/share'
 import { Instagram } from 'lucide-react'
 
-export default function Social() {
+export default function SocialSection() {
     return (
-        <>
+        <section className='custom-container'>
             <h2 className="text-3xl font-bold text-center mb-8">Follow us on Instagram</h2>
-            <div className='flex justify-center items-center flex-wrap gap-2'>
+            <div className='flex justify-center sm:justify-between items-center flex-wrap gap-2 px-4'>
                 <a href='/' className='overflow-hidden rounded-2xl relative group'>
                     <img src={socialImages.social1} alt="img" className='w-full h-full' />
                     <span className='hidden transition-shadow group-hover:flex group-hover:transition-all items-center justify-center absolute w-full h-full top-0 left-0  backdrop-brightness-75 z-10'>
@@ -45,7 +45,7 @@ export default function Social() {
                 </a>
 
             </div>
-        </>
+        </section>
 
     )
 }

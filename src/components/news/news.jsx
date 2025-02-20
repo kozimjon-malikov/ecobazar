@@ -1,54 +1,17 @@
 import { User, MessageSquare, ArrowRight, Tag } from "lucide-react"
 import { newsImages } from "../../utils/share"
-
-const blogPosts = [
-    {
-        id: 1,
-        title: "Curabitur porttitor orci eget neque accumsan venenatis. Nunc fermentum.",
-        image: newsImages.new1,
-        date: {
-            day: 18,
-            month: "NOV",
-        },
-        category: "Food",
-        author: "Admin",
-        comments: 65,
-        slug: "curabitur-porttitor",
-    },
-    {
-        id: 2,
-        title: "Eget lobortis lorem lacinia. Vivamus pharetra semper,",
-        image: newsImages.new2,
-        date: {
-            day: 29,
-            month: "JAN",
-        },
-        category: "Food",
-        author: "Admin",
-        comments: 65,
-        slug: "eget-lobortis",
-    },
-    {
-        id: 3,
-        title: "Maecenas blandit risus elementum mauris malesuada.",
-        image: newsImages.new3,
-        date: {
-            day: 21,
-            month: "FEB",
-        },
-        category: "Food",
-        author: "Admin",
-        comments: 65,
-        slug: "maecenas-blandit",
-    },
-]
-
-export default function News() {
+import { motion } from 'framer-motion'
+import { blogPosts } from "./newsApi"
+export default function NewsSection() {
     return (
         <section className="py-12">
-            <div className="container mx-auto px-4">
+            <div className="custom-container px-4">
                 <h2 className="text-3xl font-bold text-center mb-8">Latest News</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <motion.div
+                    initial={{ opacity: 0, y: 75, x: 20 }}
+                    whileInView={{ opacity: 1, y: 0, x: 0 }}
+                    transition={{ duration: 1.4 }}
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {blogPosts.map((post) => (
                         <article
                             key={post.id}
@@ -96,7 +59,7 @@ export default function News() {
                             </div>
                         </article>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
     )

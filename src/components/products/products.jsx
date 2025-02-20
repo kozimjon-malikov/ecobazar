@@ -1,83 +1,9 @@
 import { Heart, Eye, ShoppingCart, ChevronRight, ShoppingBag } from "lucide-react"
 import { categoryImages, productImages } from "../../utils/share"
+import { motion } from 'framer-motion'
+import { products } from "./productApi"
+import { containerMotion, itemMotion } from "../../utils/motionConfig"
 
-const products = [
-    {
-        id: 1,
-        name: "Green Apple",
-        image: productImages.p1,
-        price: 14.99,
-        originalPrice: 29.99,
-        rating: 4.5,
-        sale: true,
-    },
-    {
-        id: 2,
-        name: "Fresh Indian Malta",
-        image: productImages.p2,
-        price: 20.0,
-        rating: 4,
-    },
-    {
-        id: 3,
-        name: "Chinese cabbage",
-        image: productImages.p3,
-        price: 12.0,
-        rating: 4.5,
-        active: true,
-    },
-    {
-        id: 4,
-        name: "Green Lettuce",
-        image: productImages.p4,
-        price: 9.0,
-        rating: 4.5,
-    },
-    {
-        id: 5,
-        name: "Eggplant",
-        image: productImages.p5,
-        price: 34.0,
-        rating: 4.5,
-    },
-    {
-        id: 6,
-        name: "Big Potatoes",
-        image: productImages.p6,
-        price: 20.0,
-        rating: 4.5,
-    },
-    {
-        id: 7,
-        name: "Corn",
-        price: 20.0,
-        image: productImages.p7,
-        rating: 4,
-    },
-    {
-        id: 8,
-        name: "Fresh Cauliflower",
-        image: productImages.p8,
-        price: 12.0,
-        rating: 4.5,
-    },
-    {
-        id: 9,
-        name: "Green Capsicum",
-        price: 9.0,
-        image: productImages.p9,
-        originalPrice: 20.99,
-        rating: 4,
-        sale: true,
-    },
-    {
-        id: 10,
-        name: "Green Chili",
-        image: productImages.p10,
-        price: 34.0,
-        rating: 4.5,
-    },
-]
 
 const StarRating = ({ rating }) => {
     return (
@@ -99,7 +25,7 @@ const StarRating = ({ rating }) => {
 export default function Products() {
     return (
         <section className="py-8">
-            <div className="container mx-auto px-4">
+            <div className="custom-container px-4">
                 <div className="flex justify-between items-center mb-6">
                     <h2 className="text-2xl font-bold text-gray-900">Popular Products</h2>
                     <a href="/products" className="text-green-600 font-semibold hover:text-green-700 flex items-center gap-1">
@@ -108,9 +34,16 @@ export default function Products() {
                     </a>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+                <motion.div
+                    variants={containerMotion}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                    className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
                     {products.map((product) => (
-                        <div
+                        <motion.div
+                            variants={itemMotion}
+                            whileTap={{ scale: 0.95 }}
                             key={product.id}
                             className={`group relative p-4 px-5 transition-all shadow`}
                         >
@@ -149,9 +82,9 @@ export default function Products() {
                                     <StarRating rating={product.rating} />
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
     )
