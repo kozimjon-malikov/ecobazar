@@ -5,11 +5,9 @@ import { categories } from "./categoryApi";
 import { containerMotion, itemMotion } from "../../utils/motionConfig";
 
 export default function Category() {
-
     return (
         <section className="py-8">
             <div className="custom-container px-4">
-                {/* Header */}
                 <div className="flex justify-between items-center mb-6">
                     <h2 className="text-2xl font-bold text-gray-900">Popular Categories</h2>
                     <a href="/categories" className="text-green-600 font-semibold hover:text-green-700 flex items-center gap-1">
