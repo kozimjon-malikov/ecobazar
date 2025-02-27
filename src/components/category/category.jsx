@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { categoryImages } from "../../utils/share";
-import { categories } from "./categoryApi";
 import { containerMotion, itemMotion } from "../../utils/motionConfig";
+import { useSelector } from "react-redux";
 
 export default function Category() {
+    const category=useSelector((state)=>state.products.products.data)
+    console.log(category)
     return (
         <section className="py-8">
             <div className="custom-container px-4">
@@ -28,7 +30,7 @@ export default function Category() {
                     viewport={{ once: true, amount: 0.2 }}
                     className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4"
                 >
-                    {categories.map((item, i) => (
+                    {category&&category.slice(0,10).map((item, i) => (
                         <motion.div
                             key={i}
                             variants={itemMotion}
@@ -41,9 +43,9 @@ export default function Category() {
                                     className="aspect-square relative mb-3"
                                     whileHover={{ rotate: 2 }}
                                 >
-                                    <img src={item.image} alt={item.name} className="w-full h-full object-cover rounded-md" />
+                                    <img src={item.category.image} alt={item.category.name} className="w-full h-full object-cover rounded-md" />
                                 </motion.div>
-                                <h3 className="text-center text-gray-900 font-medium">{item.name}</h3>
+                                <h3 className="text-center text-gray-900 font-medium">{item.category.name}</h3>
                             </Link>
                         </motion.div>
                     ))}

@@ -1,8 +1,10 @@
 import { Heart, Eye, ShoppingCart, ChevronRight, ShoppingBag } from "lucide-react"
 import { categoryImages, productImages } from "../../utils/share"
 import { motion } from 'framer-motion'
-import { products } from "./productApi"
 import { containerMotion, itemMotion } from "../../utils/motionConfig"
+import { useDispatch, useSelector } from "react-redux"
+import { useEffect } from "react"
+import { loadProducts } from "../../redux/actions/loadProducts"
 
 
 const StarRating = ({ rating }) => {
@@ -23,6 +25,7 @@ const StarRating = ({ rating }) => {
 }
 
 export default function Products() {
+    const productsData=useSelector((state)=>state.products.products.data)
     return (
         <section className="py-8">
             <div className="custom-container px-4">
@@ -40,7 +43,7 @@ export default function Products() {
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.2 }}
                     className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-                    {products.map((product) => (
+                    {productsData&&productsData.slice(0,10).map((product) => (
                         <motion.div
                             variants={itemMotion}
                             whileTap={{ scale: 0.95 }}
@@ -53,8 +56,8 @@ export default function Products() {
 
                             <div className="relative aspect-square mb-3">
                                 <img
-                                    src={product.image || "/placeholder.svg"}
-                                    alt={product.name}
+                                    src={product.images[0] || "/placeholder.svg"}
+                                    alt={product.title}
                                     className="object-contain"
                                 />
                                 <div className="absolute top-2 right-2 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -68,7 +71,7 @@ export default function Products() {
                             </div>
 
                             <div className="space-y-1">
-                                <h3 className="font-medium text-gray-900">{product.name}</h3>
+                                <h3 className="font-medium text-gray-900">{product.title}</h3>
                                 <div>
                                     <div className="flex items-center gap-2">
                                         <span className="font-bold text-gray-900">${product.price.toFixed(2)}</span>
