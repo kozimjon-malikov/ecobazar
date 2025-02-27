@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 
 export default function Category() {
     const category=useSelector((state)=>state.products.products.data)
-    console.log(category)
     return (
         <section className="py-8">
             <div className="custom-container px-4">
@@ -30,7 +29,7 @@ export default function Category() {
                     viewport={{ once: true, amount: 0.2 }}
                     className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4"
                 >
-                    {category&&category.slice(0,10).map((item, i) => (
+                    {category?<p>Loading...</p>:category.slice(0,12).map((item, i) => (
                         <motion.div
                             key={i}
                             variants={itemMotion}

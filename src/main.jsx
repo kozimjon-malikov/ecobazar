@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { Provider } from 'react-redux'
-import { applyMiddleware, createStore } from '@reduxjs/toolkit'
+import { applyMiddleware, compose, createStore } from '@reduxjs/toolkit'
 import rootReducer from './redux/index.js'
 import { thunk } from 'redux-thunk'
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
