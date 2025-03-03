@@ -29,7 +29,7 @@ export default function Category() {
                     viewport={{ once: true, amount: 0.2 }}
                     className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4"
                 >
-                    {category?<p>Loading...</p>:category.slice(0,12).map((item, i) => (
+                    {category&&category.slice(0,12).map((item, i) => (
                         <motion.div
                             key={i}
                             variants={itemMotion}
